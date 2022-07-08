@@ -50,3 +50,10 @@ function playRound(playerSelection, computerSelection) {
         return "That is not a valid choice!"
     }
 }
+
+function game() {
+    for (let i = 0; i < 5; i++) {
+        playerSelection = prompt(`Round ${i}! Will you choose rock, paper, or scissors?`)
+        computerSelection = computerPlay()
+    }
+}
