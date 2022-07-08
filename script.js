@@ -66,7 +66,7 @@ function game() {
             console.log(`${playerSelection} vs. ${computerSelection}. You lose round ${i}!`)
             loseCount++
         }
-        else if (playRound(playerSelection, computerSelection) === 'win') {
+        else if (playRound(playerSelection, computerSelection) === 'tie') {
             console.log(`${playerSelection} vs. ${computerSelection}. Round ${i} is a tie!`)
             tieCount++
         }
