@@ -11,3 +11,42 @@ function computerPlay() {
     }
 }
 
+function round(playerSelection, computerSelection) {
+    playerSelection = playerSelection.toLowerCase();
+    if (playerSelection === 'rock') {
+        if (computerSelection === 'rock') {
+            return "Rock vs. Rock: It's a tie!"
+        }
+        else if (computerSelection === 'paper') {
+            return "Rock vs. Paper: You lose!"
+        }
+        else {
+            return "Rock vs. Scissors: You win!"
+        }
+    }
+    else if (playerSelection === 'paper') {
+        if (computerSelection === 'rock') {
+            return "Paper vs. Rock: You win!"
+        }
+        else if (computerSelection === 'paper') {
+            return "Paper vs. Paper: It's a tie!"
+        }
+        else {
+            return "Paper vs. Scissors: You lose!"
+        }
+    }
+    else if (playerSelection === 'scissors') {
+        if (computerSelection === 'rock') {
+            return "Scissors vs. Rock: You lose!"
+        }
+        else if (computerSelection === 'paper') {
+            return "Scissors vs. Paper: You win!"
+        }
+        else {
+            return "Scissors vs. Scissors: It's a tie!"
+        }
+    }
+    else {
+        return "That is not a valid choice!"
+    }
+}
