@@ -1,12 +1,13 @@
 function computerPlay() {
     const random = Math.floor(Math.random() * 100)
     if (random < 33) {
-        return 'Rock';
+        return 'rock';
     }
     else if (random >=33 && random <= 66) {
-        return 'Paper';
+        return 'paper';
     }
     else {
-        return 'Scissors';
+        return 'scissors';
     }
 }
+
