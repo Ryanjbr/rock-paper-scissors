@@ -13,37 +13,40 @@ function computerPlay() {
 
 function playRound(playerSelection, computerSelection) {
     playerSelection = playerSelection.toLowerCase();
+    while (playerSelection !== 'rock' && playerSelection !== 'paper' && playerSelection !== 'scissors') {
+        playerSelection = prompt('That is not a valid choice! Try again.')
+    }
     if (playerSelection === 'rock') {
         if (computerSelection === 'rock') {
-            return "Rock vs. Rock: It's a tie!"
+            return "tie"
         }
         else if (computerSelection === 'paper') {
-            return "Rock vs. Paper: You lose!"
+            return "lose"
         }
         else {
-            return "Rock vs. Scissors: You win!"
+            return "win"
         }
     }
     else if (playerSelection === 'paper') {
         if (computerSelection === 'rock') {
-            return "Paper vs. Rock: You win!"
+            return "win"
         }
         else if (computerSelection === 'paper') {
-            return "Paper vs. Paper: It's a tie!"
+            return "tie"
         }
         else {
-            return "Paper vs. Scissors: You lose!"
+            return "lose"
         }
     }
     else if (playerSelection === 'scissors') {
         if (computerSelection === 'rock') {
-            return "Scissors vs. Rock: You lose!"
+            return "lose"
         }
         else if (computerSelection === 'paper') {
-            return "Scissors vs. Paper: You win!"
+            return "win"
         }
         else {
-            return "Scissors vs. Scissors: It's a tie!"
+            return "tie"
         }
     }
     else {
