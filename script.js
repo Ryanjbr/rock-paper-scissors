@@ -11,7 +11,7 @@ function computerPlay() {
     }
 }
 
-function round(playerSelection, computerSelection) {
+function playRound(playerSelection, computerSelection) {
     playerSelection = playerSelection.toLowerCase();
     if (playerSelection === 'rock') {
         if (computerSelection === 'rock') {
