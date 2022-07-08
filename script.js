@@ -12,10 +12,6 @@ function computerPlay() {
 }
 
 function playRound(playerSelection, computerSelection) {
-/*     let inputCheck === false
-    while (inputCheck === false) {
-        playerSelection = prompt('That is not a valid choice! Try again.')
-    } */
     if (playerSelection === 'rock') {
         if (computerSelection === 'rock') {
             return "tie"
@@ -56,9 +52,11 @@ function playRound(playerSelection, computerSelection) {
 
 function game() {
     let winCount = 0, tieCount = 0, loseCount = 0
-    for (let i = 0; i < 5; i++) {
-        playerSelection = prompt(`Round ${i + 1}! Will you choose rock, paper, or scissors?`)
-        playerSelection = playerSelection.toLowerCase();
+    for (let i = 0; i < 5; i++) { 
+        let playerSelection = prompt(`Round ${i + 1}! Will you choose rock, paper, or scissors?`).toLowerCase()
+        while (inputCheck(playerSelection) === false) {
+            playerSelection = prompt('That is not a valid input! Try again.').toLowerCase()
+        }
         computerSelection = computerPlay()
         if (playRound(playerSelection, computerSelection) === 'win') {
             console.log(`${playerSelection} vs. ${computerSelection}. You win round ${i}!`)
