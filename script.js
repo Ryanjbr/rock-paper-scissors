@@ -50,7 +50,7 @@ function playRound(playerSelection, computerSelection = computerPlay()) {
     }
 }
 
-/* function game() {
+function game() {
     let winCount = 0, tieCount = 0, loseCount = 0
     for (let i = 0; i < 5; i++) { 
         let playerSelection = prompt(`Round ${i + 1}! Will you choose rock, paper, or scissors?`).toLowerCase()
@@ -59,29 +59,29 @@ function playRound(playerSelection, computerSelection = computerPlay()) {
         }
         computerSelection = computerPlay()
         if (playRound(playerSelection, computerSelection) === 'win') {
-            console.log(`${playerSelection} vs. ${computerSelection}. You win round ${i}!`)
+            displayResult(`${playerSelection} vs. ${computerSelection}. You win round ${i}!`)
             winCount++
         }
         else if (playRound(playerSelection, computerSelection) === 'lose') {
-            console.log(`${playerSelection} vs. ${computerSelection}. You lose round ${i}!`)
+            displayResult(`${playerSelection} vs. ${computerSelection}. You lose round ${i}!`)
             loseCount++
         }
         else if (playRound(playerSelection, computerSelection) === 'tie') {
-            console.log(`${playerSelection} vs. ${computerSelection}. Round ${i} is a tie!`)
+            displayResult(`${playerSelection} vs. ${computerSelection}. Round ${i} is a tie!`)
             tieCount++
         }
     }
     if (winCount > tieCount && winCount > loseCount) {
-        console.log('You win the game! :)')
+        displayResult('You win the game! :)')
     }
     else if (loseCount > winCount && loseCount > tieCount) {
-        console.log('You lose the game! :(')
+        displayResult('You lose the game! :(')
     }
     else {
-        console.log("It's a tie!")
+        displayResult("It's a tie!")
     }  
 }
- */
+
 function inputCheck(input) {
     if (input === 'rock') {
         return true
@@ -97,8 +97,15 @@ function inputCheck(input) {
     }
 }
 
+const btns = document.querySelectorAll('button')
+
 btns.forEach((btn) => {
     btn.addEventListener('click', () => {
-        console.log(playRound(btn.id))
+        displayResult(playRound(btn.id))
     });
 });
+
+function displayResult(result) {
+    const display = document.querySelector('#display');
+    display.textContent = result;
+}
