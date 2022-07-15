@@ -50,37 +50,50 @@ function playRound(playerSelection, computerSelection = computerPlay()) {
     }
 }
 
-function game() {
-    let winCount = 0, tieCount = 0, loseCount = 0
-    for (let i = 0; i < 5; i++) { 
-        let playerSelection = prompt(`Round ${i + 1}! Will you choose rock, paper, or scissors?`).toLowerCase()
-        while (inputCheck(playerSelection) === false) {
-            playerSelection = prompt('That is not a valid input! Try again.').toLowerCase()
-        }
-        computerSelection = computerPlay()
-        if (playRound(playerSelection, computerSelection) === 'win') {
-            displayResult(`${playerSelection} vs. ${computerSelection}. You win round ${i}!`)
-            winCount++
-        }
-        else if (playRound(playerSelection, computerSelection) === 'lose') {
-            displayResult(`${playerSelection} vs. ${computerSelection}. You lose round ${i}!`)
-            loseCount++
-        }
-        else if (playRound(playerSelection, computerSelection) === 'tie') {
-            displayResult(`${playerSelection} vs. ${computerSelection}. Round ${i} is a tie!`)
-            tieCount++
-        }
-    }
-    if (winCount > tieCount && winCount > loseCount) {
-        displayResult('You win the game! :)')
-    }
-    else if (loseCount > winCount && loseCount > tieCount) {
-        displayResult('You lose the game! :(')
-    }
-    else {
-        displayResult("It's a tie!")
-    }  
+function displayResult(result) {
+    const display = document.querySelector('#display');
+    display.textContent = result;
 }
+
+let winCount = 0, tieCount = 0, loseCount = 0
+const ties = document.querySelector('#ties')
+const wins = document.querySelector('#wins')
+const losses = document.querySelector('#losses')
+const btns = document.querySelectorAll('button')
+let result = ''
+
+btns.forEach((btn) => {
+    btn.addEventListener('click', () => {
+        computerSelection = computerPlay()
+        result = playRound(btn.id, computerSelection);
+        console.log(result)
+        if (result === 'win') {
+            displayResult(`${btn.id} vs. ${computerSelection}. You win!`)
+            winCount++
+            wins.textContent = `Wins: ${winCount}`
+        }
+        else if (result === 'lose') {
+            displayResult(`${btn.id} vs. ${computerSelection}. You lose!`)
+            loseCount++
+            losses.textContent = `Losses: ${loseCount}`
+        }
+        else if (result === 'tie') {
+            displayResult(`${btn.id} vs. ${computerSelection}. It's a tie!`)
+            tieCount++
+            ties.textContent = `Ties: ${tieCount}`
+        }
+    });
+});
+
+/* if (winCount > tieCount && winCount > loseCount) {
+    displayResult('You win the game! :)')
+}
+else if (loseCount > winCount && loseCount > tieCount) {
+    displayResult('You lose the game! :(')
+}
+else {
+    displayResult("It's a tie!")
+}   */
 
 function inputCheck(input) {
     if (input === 'rock') {
@@ -97,15 +110,6 @@ function inputCheck(input) {
     }
 }
 
-const btns = document.querySelectorAll('button')
 
-btns.forEach((btn) => {
-    btn.addEventListener('click', () => {
-        displayResult(playRound(btn.id))
-    });
-});
 
-function displayResult(result) {
-    const display = document.querySelector('#display');
-    display.textContent = result;
-}
+
