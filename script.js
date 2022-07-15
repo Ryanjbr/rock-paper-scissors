@@ -55,12 +55,23 @@ function displayResult(result) {
     display.textContent = result;
 }
 
+function displayGameResult(message) {
+    while (container.firstChild) {
+        container.removeChild(container.firstChild)
+    }
+    let div = document.createElement('div')
+    container.appendChild(div)
+    div.textContent= message
+};
+
 let winCount = 0, tieCount = 0, loseCount = 0
 const ties = document.querySelector('#ties')
 const wins = document.querySelector('#wins')
 const losses = document.querySelector('#losses')
 const btns = document.querySelectorAll('button')
+const container = document.querySelector('#container')
 let result = ''
+const gameResult = document.querySelector('#gameResult')
 
 btns.forEach((btn) => {
     btn.addEventListener('click', () => {
@@ -71,11 +82,17 @@ btns.forEach((btn) => {
             displayResult(`${btn.id} vs. ${computerSelection}. You win!`)
             winCount++
             wins.textContent = `Wins: ${winCount}`
+            if (winCount >= 5) {
+                displayGameResult('You win the game! :)');
+            };
         }
         else if (result === 'lose') {
             displayResult(`${btn.id} vs. ${computerSelection}. You lose!`)
             loseCount++
             losses.textContent = `Losses: ${loseCount}`
+            if (loseCount >= 5) {
+                displayGameResult('You lose the game! :(');
+            };
         }
         else if (result === 'tie') {
             displayResult(`${btn.id} vs. ${computerSelection}. It's a tie!`)
@@ -85,15 +102,8 @@ btns.forEach((btn) => {
     });
 });
 
-/* if (winCount > tieCount && winCount > loseCount) {
-    displayResult('You win the game! :)')
-}
-else if (loseCount > winCount && loseCount > tieCount) {
-    displayResult('You lose the game! :(')
-}
-else {
-    displayResult("It's a tie!")
-}   */
+
+
 
 function inputCheck(input) {
     if (input === 'rock') {
