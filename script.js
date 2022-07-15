@@ -11,7 +11,7 @@ function computerPlay() {
     }
 }
 
-function playRound(playerSelection, computerSelection) {
+function playRound(playerSelection, computerSelection = computerPlay()) {
     if (playerSelection === 'rock') {
         if (computerSelection === 'rock') {
             return "tie"
@@ -50,7 +50,7 @@ function playRound(playerSelection, computerSelection) {
     }
 }
 
-function game() {
+/* function game() {
     let winCount = 0, tieCount = 0, loseCount = 0
     for (let i = 0; i < 5; i++) { 
         let playerSelection = prompt(`Round ${i + 1}! Will you choose rock, paper, or scissors?`).toLowerCase()
@@ -81,7 +81,7 @@ function game() {
         console.log("It's a tie!")
     }  
 }
-
+ */
 function inputCheck(input) {
     if (input === 'rock') {
         return true
@@ -96,3 +96,9 @@ function inputCheck(input) {
         return false
     }
 }
+
+btns.forEach((btn) => {
+    btn.addEventListener('click', () => {
+        console.log(playRound(btn.id))
+    });
+});
