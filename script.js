@@ -123,6 +123,8 @@ btns.forEach((btn) => {
             };
         }
         else if (result === 'tie') {
+            let playerCapital = capitalizeFirstLetter(btn.id);
+            let computerCapital = capitalizeFirstLetter(computerSelection);
             displayResult(`${playerCapital} vs. ${computerCapital}. It's a tie!`)
             tieCount++
             ties.style.opacity = 0;
