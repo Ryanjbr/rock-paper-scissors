@@ -30,7 +30,7 @@ body {
 #messages {
     display: flex;
     flex-direction: row;
-    flex-wrap: wrap;
+    flex-wrap: nowrap;
     max-width: 300px;
     width: 350px;
     justify-content: center;
