@@ -60,14 +60,20 @@ function displayResult(result) {
 }
 
 function displayGameResult(message) {
-    while (container.firstChild) {
-        container.removeChild(container.firstChild)
-    }
-    let div = document.createElement('div')
+while (container.firstChild) {
+    container.style.opacity = 0;
+    container.removeChild(container.firstChild)
+};
+let div = document.createElement('div')
+div.style.opacity = 0;
+setTimeout(function() {
     div.setAttribute("id", "messages");
     div.setAttribute("class", "message")
     container.appendChild(div)
     div.textContent= message
+    div.style.opacity = 1;
+    container.style.opacity = 1
+}, 500);
 };
 
 function capitalizeFirstLetter(string) {
