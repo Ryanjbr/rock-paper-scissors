@@ -1,10 +1,90 @@
+* {
+    transition: 1.2s;
+}
+
 body {
-    display: flex;
     height: 100%;
     width: 100%;
     background-image: url("images/background.jpg");
     background-size: cover;
     background-color: #cccccc;
-    justify-content: center;
-    align-content: center;
+
    }
+
+#container {
+    min-height: 100%;
+    height: 100vh;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    gap: 20px;
+}
+
+#buttons {
+    display: flex;
+    flex-directon: row;
+    gap: 10px;
+}
+
+#messages {
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+    max-width: 300px;
+    width: 350px;
+    justify-content: center;
+    align-items: center;
+    color: #8e3a1e;
+    background-color: #eab57a;
+    box-shadow: 10px 10px 5px #8e3a1e;
+    border-radius: 4px;
+    -webkit-transition: opacity .35s ease-in-out;
+    -moz-transition: opacity .35s ease-in-out;
+    -ms-transition: opacity .35s ease-in-out;
+    -o-transition: opacity .35s ease-in-out;
+    transition: opacity .35s ease-in-out;
+}
+
+#scoreboard {
+    display: flex;
+    width: 350px;
+    flex-direction: column;
+}
+
+.message {
+    height: 50px;
+    line-height: 50px;
+    width: 300px;
+    text-align: center;
+    align-items: center;
+}
+
+.message.score {
+    width: 75px;
+}
+
+button {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin: 0;
+    padding: 5px;
+    border: 2px solid whitesmoke;
+    height: 100px;
+    width: 100px;
+    background-color: rgba(0, 0, 0, 0);
+}
+
+div {
+    align-self: center;
+}
+
+img {
+    vertical-align: text-top;
+    height: 102%;
+    width: 101%;
+    border: 2px solid #8e3a1e;
+    margin: 0;
+    padding: 0;
+}

@@ -52,7 +52,11 @@ function playRound(playerSelection, computerSelection = computerPlay()) {
 
 function displayResult(result) {
     const display = document.querySelector('#display');
-    display.textContent = result;
+    display.style.opacity = 0;
+    setTimeout(function() {
+        display.textContent = result;
+        display.style.opacity = 1;
+    }, 350);
 }
 
 function displayGameResult(message) {
@@ -60,6 +64,8 @@ function displayGameResult(message) {
         container.removeChild(container.firstChild)
     }
     let div = document.createElement('div')
+    div.setAttribute("id", "messages");
+    div.setAttribute("class", "message")
     container.appendChild(div)
     div.textContent= message
 };
