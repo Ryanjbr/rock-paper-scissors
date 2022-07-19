@@ -70,6 +70,10 @@ function displayGameResult(message) {
     div.textContent= message
 };
 
+function capitalizeFirstLetter(string) {
+    return string.charAt(0).toUpperCase() + string.slice(1);
+  }
+
 let winCount = 0, tieCount = 0, loseCount = 0
 const ties = document.querySelector('#ties')
 const wins = document.querySelector('#wins')
@@ -85,25 +89,41 @@ btns.forEach((btn) => {
         result = playRound(btn.id, computerSelection);
         console.log(result)
         if (result === 'win') {
-            displayResult(`${btn.id} vs. ${computerSelection}. You win!`)
+            let playerCapital = capitalizeFirstLetter(btn.id);
+            let computerCapital = capitalizeFirstLetter(computerSelection);
+            displayResult(`${playerCapital} vs. ${computerCapital}. You win!`)
             winCount++
-            wins.textContent = `Wins: ${winCount}`
+            wins.style.opacity = 0;
+            setTimeout(function () {
+                wins.textContent = `Wins: ${winCount}`
+                wins.style.opacity = 1
+            }, 350);
             if (winCount >= 5) {
                 displayGameResult('You win the game! :)');
             };
         }
         else if (result === 'lose') {
-            displayResult(`${btn.id} vs. ${computerSelection}. You lose!`)
+            let playerCapital = capitalizeFirstLetter(btn.id);
+            let computerCapital = capitalizeFirstLetter(computerSelection);
+            displayResult(`${playerCapital} vs. ${computerCapital}. You lose!`)
             loseCount++
-            losses.textContent = `Losses: ${loseCount}`
+            losses.style.opacity = 0;
+            setTimeout(function () {
+                losses.textContent = `Losses: ${loseCount}`
+                losses.style.opacity = 1
+            }, 350);
             if (loseCount >= 5) {
                 displayGameResult('You lose the game! :(');
             };
         }
         else if (result === 'tie') {
-            displayResult(`${btn.id} vs. ${computerSelection}. It's a tie!`)
+            displayResult(`${playerCapital} vs. ${computerCapital}. It's a tie!`)
             tieCount++
-            ties.textContent = `Ties: ${tieCount}`
+            ties.style.opacity = 0;
+            setTimeout(function () {
+                ties.textContent = `Ties: ${tieCount}`
+                ties.style.opacity = 1
+            }, 350);
         }
     });
 });
